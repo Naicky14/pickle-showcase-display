@@ -59,7 +59,7 @@ const ImageCarousel = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
   return <section className="w-full flex-1 flex flex-col items-center justify-center relative overflow-hidden px-4 sm:px-6 min-h-0">
-      <div className="w-full h-full flex items-center justify-center relative max-h-[60vh] sm:max-h-[65vh]" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
+      <div className="w-full h-full flex items-center justify-center relative max-h-[50vh] sm:max-h-[55vh]" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
         {/* Image Container */}
         <div className="relative w-full h-full flex items-center justify-center">
           <img key={currentIndex} src={images[currentIndex].src} alt={images[currentIndex].alt} className="max-w-full max-h-full object-contain rounded-xl shadow-lg animate-fade-in" />
