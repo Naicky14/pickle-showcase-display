@@ -2,7 +2,7 @@ import titreImage from "@/assets/titre_Landing-page.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="w-full py-4 px-4 sm:py-6 sm:px-6 flex-shrink-0">
+    <section className="w-full py-2 px-4 sm:py-3 sm:px-6 flex-shrink-0">
       <div className="w-full max-w-3xl mx-auto animate-fade-in">
         <img
           src={titreImage}

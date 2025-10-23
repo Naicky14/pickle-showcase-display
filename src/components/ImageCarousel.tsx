@@ -59,9 +59,9 @@ const ImageCarousel = () => {
   }, []);
 
   return (
-    <section className="w-full flex-1 flex flex-col items-center justify-center relative overflow-hidden px-4 sm:px-6">
+    <section className="w-full flex-1 flex flex-col items-center justify-center relative overflow-hidden px-4 sm:px-6 min-h-0">
       <div
-        className="w-full flex-1 flex items-center justify-center relative pb-8"
+        className="w-full h-full flex items-center justify-center relative max-h-[60vh] sm:max-h-[65vh]"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -98,15 +98,15 @@ const ImageCarousel = () => {
         </Button>
 
         {/* Image Counter */}
-        <div className="absolute top-4 right-4 bg-card/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-md">
-          <p className="text-xs sm:text-sm font-medium text-foreground">
+        <div className="absolute top-2 right-2 bg-card/80 backdrop-blur-sm px-2 py-1 rounded-full shadow-md">
+          <p className="text-xs font-medium text-foreground">
             {currentIndex + 1} / {images.length}
           </p>
         </div>
       </div>
 
       {/* Dots Indicator - Below carousel */}
-      <div className="flex gap-2 pb-4">
+      <div className="flex gap-2 py-3">
         {images.map((_, index) => (
           <button
             key={index}
