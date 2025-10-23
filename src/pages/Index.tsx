@@ -3,7 +3,7 @@ import ImageCarousel from "@/components/ImageCarousel";
 
 const Index = () => {
   return (
-    <div className="w-full overflow-x-hidden">
+    <div className="w-full h-screen overflow-hidden flex flex-col bg-background">
       <HeroSection />
       <ImageCarousel />
     </div>

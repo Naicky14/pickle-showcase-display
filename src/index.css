@@ -9,7 +9,7 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* ProjectBocal Design System - Inspired by pickles! */
-    --background: 42 40% 94%;
+    --background: 0 0% 100%;
     --foreground: 0 0% 10%;
 
     --card: 42 35% 96%;
