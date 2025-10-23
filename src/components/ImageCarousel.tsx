@@ -59,9 +59,9 @@ const ImageCarousel = () => {
   }, []);
 
   return (
-    <section className="w-full flex-1 flex items-center justify-center relative overflow-hidden px-4 pb-4 sm:px-6 sm:pb-6">
+    <section className="w-full flex-1 flex flex-col items-center justify-center relative overflow-hidden px-4 sm:px-6">
       <div
-        className="w-full h-full flex items-center justify-center relative"
+        className="w-full flex-1 flex items-center justify-center relative pb-8"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -81,7 +81,7 @@ const ImageCarousel = () => {
           variant="secondary"
           size="icon"
           onClick={prevSlide}
-          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-lg hover:scale-110 transition-transform z-10"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-lg hover:scale-110 transition-transform z-10 bg-primary hover:bg-primary/90 text-primary-foreground"
           aria-label="Image précédente"
         >
           <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -91,27 +91,11 @@ const ImageCarousel = () => {
           variant="secondary"
           size="icon"
           onClick={nextSlide}
-          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-lg hover:scale-110 transition-transform z-10"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full shadow-lg hover:scale-110 transition-transform z-10 bg-primary hover:bg-primary/90 text-primary-foreground"
           aria-label="Image suivante"
         >
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
         </Button>
-
-        {/* Dots Indicator */}
-        <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "bg-secondary scale-125"
-                  : "bg-muted hover:bg-muted-foreground"
-              }`}
-              aria-label={`Aller à l'image ${index + 1}`}
-            />
-          ))}
-        </div>
 
         {/* Image Counter */}
         <div className="absolute top-4 right-4 bg-card/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-md">
@@ -119,6 +103,22 @@ const ImageCarousel = () => {
             {currentIndex + 1} / {images.length}
           </p>
         </div>
+      </div>
+
+      {/* Dots Indicator - Below carousel */}
+      <div className="flex gap-2 pb-4">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+              index === currentIndex
+                ? "bg-primary scale-125"
+                : "bg-muted hover:bg-primary/50"
+            }`}
+            aria-label={`Aller à l'image ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );
