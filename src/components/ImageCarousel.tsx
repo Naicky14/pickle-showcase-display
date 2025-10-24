@@ -9,6 +9,7 @@ import halloweenVid from "@/assets/Halloween.mp4";
 import hugoNoelImg from "@/assets/Hugo_Noel.jpg";
 import nouvelAnImg from "@/assets/Nouvel_An.jpg";
 import nouvelAnVid from "@/assets/Nouvel_An.mp4";
+import saintValentinImg from "@/assets/Saint_Valentin.jpg";
 import saintValentinVid from "@/assets/Saint_Valentin.mp4";
 import paquesImg from "@/assets/Paques.jpg";
 
@@ -27,7 +28,8 @@ const slides: Slide[] = [
   { type: 'image', src: hugoNoelImg, alt: "Joyeux Noël" },
   { type: 'image', src: nouvelAnImg, alt: "Bonne Année" },
   { type: 'video', src: nouvelAnVid, alt: "Bonne Année - Vidéo" },
-  { type: 'video', src: saintValentinVid, alt: "Joyeuse Saint-Valentin" },
+  { type: 'image', src: saintValentinImg, alt: "Joyeuse Saint-Valentin" },
+  { type: 'video', src: saintValentinVid, alt: "Joyeuse Saint-Valentin - Vidéo" },
   { type: 'image', src: paquesImg, alt: "Joyeuse Pâques" }
 ];
 const ImageCarousel = () => {
