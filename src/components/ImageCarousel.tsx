@@ -2,39 +2,39 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import feteMusiqueImg from "@/assets/Fete_Musique.jpg";
+import feteMusiqueVid from "@/assets/Fete_Musique.mp4";
 import feteNationaleImg from "@/assets/Fete_Nationale.jpg";
 import halloweenImg from "@/assets/Halloween.jpg";
+import halloweenVid from "@/assets/Halloween.mp4";
 import hugoNoelImg from "@/assets/Hugo_Noel.jpg";
 import nouvelAnImg from "@/assets/Nouvel_An.jpg";
 import paquesImg from "@/assets/Paques.jpg";
-const images = [{
-  src: feteMusiqueImg,
-  alt: "Fête de la Musique"
-}, {
-  src: feteNationaleImg,
-  alt: "Fête Nationale"
-}, {
-  src: halloweenImg,
-  alt: "Joyeux Halloween"
-}, {
-  src: hugoNoelImg,
-  alt: "Joyeux Noël"
-}, {
-  src: nouvelAnImg,
-  alt: "Bonne Année"
-}, {
-  src: paquesImg,
-  alt: "Joyeuse Pâques"
-}];
+
+type Slide = {
+  type: 'image' | 'video';
+  src: string;
+  alt: string;
+};
+
+const slides: Slide[] = [
+  { type: 'image', src: feteMusiqueImg, alt: "Fête de la Musique" },
+  { type: 'video', src: feteMusiqueVid, alt: "Fête de la Musique - Vidéo" },
+  { type: 'image', src: feteNationaleImg, alt: "Fête Nationale" },
+  { type: 'image', src: halloweenImg, alt: "Joyeux Halloween" },
+  { type: 'video', src: halloweenVid, alt: "Joyeux Halloween - Vidéo" },
+  { type: 'image', src: hugoNoelImg, alt: "Joyeux Noël" },
+  { type: 'image', src: nouvelAnImg, alt: "Bonne Année" },
+  { type: 'image', src: paquesImg, alt: "Joyeuse Pâques" }
+];
 const ImageCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const nextSlide = () => {
-    setCurrentIndex(prev => (prev + 1) % images.length);
+    setCurrentIndex(prev => (prev + 1) % slides.length);
   };
   const prevSlide = () => {
-    setCurrentIndex(prev => (prev - 1 + images.length) % images.length);
+    setCurrentIndex(prev => (prev - 1 + slides.length) % slides.length);
   };
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
@@ -60,9 +60,26 @@ const ImageCarousel = () => {
   }, []);
   return <section className="w-full flex-1 flex flex-col items-center justify-center relative overflow-hidden px-4 sm:px-6 min-h-0">
       <div className="w-full h-full flex items-center justify-center relative max-h-[50vh] sm:max-h-[55vh]" onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
-        {/* Image Container */}
+        {/* Media Container */}
         <div className="relative w-full h-full flex items-center justify-center">
-          <img key={currentIndex} src={images[currentIndex].src} alt={images[currentIndex].alt} className="max-w-full max-h-full object-contain rounded-xl shadow-lg animate-fade-in" />
+          {slides[currentIndex].type === 'image' ? (
+            <img 
+              key={currentIndex} 
+              src={slides[currentIndex].src} 
+              alt={slides[currentIndex].alt} 
+              className="max-w-full max-h-full object-contain rounded-xl shadow-lg animate-fade-in" 
+            />
+          ) : (
+            <video
+              key={currentIndex}
+              src={slides[currentIndex].src}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="max-w-full max-h-full object-contain rounded-xl shadow-lg animate-fade-in"
+            />
+          )}
         </div>
 
         {/* Navigation Buttons */}
@@ -80,7 +97,7 @@ const ImageCarousel = () => {
 
       {/* Dots Indicator - Below carousel */}
       <div className="flex gap-2 py-3">
-        {images.map((_, index) => <button key={index} onClick={() => setCurrentIndex(index)} className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-primary scale-125" : "bg-muted hover:bg-primary/50"}`} aria-label={`Aller à l'image ${index + 1}`} />)}
+        {slides.map((_, index) => <button key={index} onClick={() => setCurrentIndex(index)} className={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${index === currentIndex ? "bg-primary scale-125" : "bg-muted hover:bg-primary/50"}`} aria-label={`Aller au slide ${index + 1}`} />)}
       </div>
     </section>;
 };
