@@ -20,6 +20,9 @@ type Slide = {
 };
 
 const slides: Slide[] = [
+  { type: 'image', src: saintValentinImg, alt: "Joyeuse Saint-Valentin" },
+  { type: 'video', src: saintValentinVid, alt: "Joyeuse Saint-Valentin - Vidéo" },
+  { type: 'image', src: paquesImg, alt: "Joyeuse Pâques" },
   { type: 'image', src: feteMusiqueImg, alt: "Fête de la Musique" },
   { type: 'video', src: feteMusiqueVid, alt: "Fête de la Musique - Vidéo" },
   { type: 'image', src: feteNationaleImg, alt: "Fête Nationale" },
@@ -27,10 +30,7 @@ const slides: Slide[] = [
   { type: 'video', src: halloweenVid, alt: "Joyeux Halloween - Vidéo" },
   { type: 'image', src: hugoNoelImg, alt: "Joyeux Noël" },
   { type: 'image', src: nouvelAnImg, alt: "Bonne Année" },
-  { type: 'video', src: nouvelAnVid, alt: "Bonne Année - Vidéo" },
-  { type: 'image', src: saintValentinImg, alt: "Joyeuse Saint-Valentin" },
-  { type: 'video', src: saintValentinVid, alt: "Joyeuse Saint-Valentin - Vidéo" },
-  { type: 'image', src: paquesImg, alt: "Joyeuse Pâques" }
+  { type: 'video', src: nouvelAnVid, alt: "Bonne Année - Vidéo" }
 ];
 const ImageCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
