@@ -1,4 +1,4 @@
-import titreImage from "@/assets/titre_Landing-page.jpg";
+import titreImage from "@/assets/titre_Landing-page-2.jpg";
 
 const HeroSection = () => {
   return (
